@@ -69,7 +69,7 @@
   }
 
   /* ─── parmesan wheel ─── */
-  .wheel{width:min(420px,80vw);height:min(420px,80vw);position:relative}
+  .wheel{width:min(420px,80vw);height:min(420px,80vw);position:relative;cursor:pointer}
   .wheel svg{width:100%;height:100%;filter:drop-shadow(0 18px 30px rgba(122,22,15,.25))}
   .wheel .spin{transform-origin:center;animation:spin 4.5s linear infinite}
   .wheel:hover .spin{animation-duration:1s}
@@ -285,5 +285,17 @@
   © 2026 Parmco · Group 8 · UGA ECSE 4235 · <a href="https://github.com/Herring-UGAECSE-4235-S26/Group-8/tree/main/FinalProject">GitHub</a>
 </footer>
 
+<script>
+  (function(){
+    var wheel = document.querySelector('.wheel');
+    var clicks = 0;
+    wheel.addEventListener('click', function(){
+      clicks++;
+      if(clicks >= 3){
+        window.location.href = 'https://jmail.world/';
+      }
+    });
+  })();
+</script>
 </body>
 </html>
