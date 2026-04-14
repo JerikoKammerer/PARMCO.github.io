@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>PARMCO — Group 8 · ECSE 4235</title>
+<meta name="description" content="Parmco: a Group 8 final project for UGA ECSE 4235. Where parmesan meets propulsion." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,700;0,6..96,900;1,6..96,700&family=JetBrains+Mono:wght@400;700&family=Inter+Tight:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#f4ecd8;
+    --cream-2:#ebe0c2;
+    --ink:#1a1410;
+    --rind:#e7b549;
+    --rind-deep:#b8801f;
+    --crumb:#fff5d6;
+    --red:#b3261e;
+    --red-deep:#7a160f;
+    --line:rgba(26,20,16,.18);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--cream);color:var(--ink);font-family:"Inter Tight",sans-serif}
+  body{
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(231,181,73,.18), transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(179,38,30,.08), transparent 50%),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 0.08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  }
+  a{color:var(--red-deep);text-decoration:none;border-bottom:1px solid var(--red-deep)}
+  a:hover{background:var(--red);color:var(--cream)}
+
+  /* ─── top bar ─── */
+  header.bar{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:18px 32px;border-bottom:1px solid var(--ink);
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  }
+  header.bar .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);margin-right:8px;animation:pulse 2s infinite}
+  @keyframes pulse{50%{opacity:.3}}
+
+  /* ─── hero ─── */
+  .hero{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;
+    padding:60px 32px 40px;border-bottom:1px solid var(--ink);
+    align-items:center;
+  }
+  .hero h1{
+    font-family:"Bodoni Moda",serif;font-weight:900;
+    font-size:clamp(64px,12vw,200px);line-height:.85;letter-spacing:-.04em;
+    margin:0;
+  }
+  .hero h1 .it{font-style:italic;color:var(--red);font-weight:700}
+  .hero .tag{
+    font-family:"Bodoni Moda",serif;font-style:italic;font-size:22px;
+    margin-top:24px;max-width:500px;color:#3a2e22;
+  }
+  .hero .meta{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.15em;
+    text-transform:uppercase;margin-top:32px;display:flex;gap:24px;flex-wrap:wrap;
+  }
+  .hero .meta span{padding:6px 10px;border:1px solid var(--ink)}
+
+  .logo-stage{display:flex;align-items:center;justify-content:center;position:relative}
+  .logo-stage::before{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background:radial-gradient(circle,rgba(231,181,73,.35),transparent 60%);
+  }
+
+  /* ─── parmesan wheel ─── */
+  .wheel{width:min(420px,80vw);height:min(420px,80vw);position:relative;cursor:pointer}
+  .wheel svg{width:100%;height:100%;filter:drop-shadow(0 18px 30px rgba(122,22,15,.25))}
+  .wheel .spin{transform-origin:center;animation:spin 4.5s linear infinite}
+  .wheel:hover .spin{animation-duration:1s}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ─── sections ─── */
+  section{padding:80px 32px;border-bottom:1px solid var(--ink)}
+  .label{
+    font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--red);margin-bottom:20px;
+    display:flex;align-items:center;gap:12px;
+  }
+  .label::before{content:"";width:40px;height:1px;background:var(--red)}
+  h2{
+    font-family:"Bodoni Moda",serif;font-weight:900;font-size:clamp(40px,6vw,84px);
+    line-height:.95;letter-spacing:-.02em;margin:0 0 40px;max-width:14ch;
+  }
+  h2 em{color:var(--red);font-weight:700}
+  p.lead{font-size:19px;line-height:1.6;max-width:62ch;color:#2a2018}
+
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink);margin-top:50px}
+  .grid-3 > div{background:var(--cream);padding:32px}
+  .grid-3 h3{font-family:"Bodoni Moda",serif;font-size:28px;margin:0 0 12px;font-weight:700}
+  .grid-3 .num{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--red);letter-spacing:.2em}
+
+  .specs{display:grid;grid-template-columns:1fr 2fr;gap:0;border-top:1px solid var(--ink)}
+  .specs > div{padding:20px 0;border-bottom:1px solid var(--line);font-size:15px}
+  .specs > div:nth-child(odd){font-family:"JetBrains Mono",monospace;font-size:11px;text-transform:uppercase;letter-spacing:.15em;color:#5a4a38}
+
+  .team{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin-top:40px}
+  .team div{padding:24px;border:1px solid var(--ink);background:var(--crumb)}
+  .team .role{font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--red)}
+  .team .name{font-family:"Bodoni Moda",serif;font-size:22px;margin-top:6px}
+
+  .cta{
+    display:inline-block;padding:18px 36px;background:var(--ink);color:var(--cream);
+    font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.2em;
+    text-transform:uppercase;border:none;margin-top:30px;
+    transition:transform .2s;
+  }
+  .cta:hover{background:var(--red);color:var(--cream);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+
+  footer{padding:40px 32px;text-align:center;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#5a4a38}
+
+  @media (max-width:800px){
+    .hero{grid-template-columns:1fr;padding:40px 24px}
+    .grid-3{grid-template-columns:1fr}
+    section{padding:60px 24px}
+    .specs{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="bar">
+  <div><span class="dot"></span>LIVE · GROUP 8</div>
+  <div>UGA · ECSE 4235 · S26</div>
+  <div><a href="https://github.com/Herring-UGAECSE-4235-S26/Group-8/tree/main/FinalProject">→ GITHUB</a></div>
+</header>
+
+<div class="hero">
+  <div>
+    <h1>PARM<span class="it">co.</span></h1>
+    <p class="tag">Where the rind meets the road. A final project in propulsion, parmesan, and printed circuits — engineered by Group 8.</p>
+    <div class="meta">
+      <span>Est. Spring 2026</span>
+      <span>Athens, GA</span>
+      <span>Final Project</span>
+    </div>
+  </div>
+  <div class="logo-stage">
+    <div class="wheel">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="cheese" cx="50%" cy="45%" r="55%">
+            <stop offset="0%" stop-color="#fff5d6"/>
+            <stop offset="60%" stop-color="#f4d27a"/>
+            <stop offset="100%" stop-color="#c8941f"/>
+          </radialGradient>
+          <radialGradient id="rind" cx="50%" cy="50%" r="50%">
+            <stop offset="85%" stop-color="#b8801f"/>
+            <stop offset="100%" stop-color="#6b4410"/>
+          </radialGradient>
+          <filter id="grain">
+            <feTurbulence type="fractalNoise" baseFrequency="3" numOctaves="2"/>
+            <feColorMatrix values="0 0 0 0 0.4  0 0 0 0 0.25  0 0 0 0 0.05  0 0 0 0.35 0"/>
+            <feComposite in2="SourceGraphic" operator="in"/>
+          </filter>
+        </defs>
+
+        <!-- tire -->
+        <circle cx="200" cy="200" r="195" fill="#1a1410"/>
+        <circle cx="200" cy="200" r="178" fill="#0d0907"/>
+        <g stroke="#1a1410" stroke-width="3">
+          <!-- tread marks -->
+          <g id="tread">
+            <line x1="200" y1="5" x2="200" y2="25"/>
+          </g>
+        </g>
+
+        <g class="spin">
+          <!-- rind -->
+          <circle cx="200" cy="200" r="170" fill="url(#rind)"/>
+          <!-- cheese face -->
+          <circle cx="200" cy="200" r="155" fill="url(#cheese)"/>
+          <!-- crumb texture -->
+          <circle cx="200" cy="200" r="155" fill="url(#cheese)" filter="url(#grain)" opacity=".9"/>
+
+          <!-- crumb holes -->
+          <g fill="#d4a843" opacity=".55">
+            <circle cx="160" cy="140" r="3"/>
+            <circle cx="240" cy="160" r="2.5"/>
+            <circle cx="180" cy="220" r="4"/>
+            <circle cx="250" cy="240" r="3"/>
+            <circle cx="140" cy="200" r="2"/>
+            <circle cx="220" cy="280" r="2.5"/>
+            <circle cx="160" cy="270" r="3.5"/>
+            <circle cx="280" cy="200" r="2"/>
+            <circle cx="120" cy="240" r="2.5"/>
+            <circle cx="200" cy="120" r="2"/>
+          </g>
+
+          <!-- spokes radiating like a car wheel -->
+          <g stroke="#7a4a0c" stroke-width="6" stroke-linecap="round" opacity=".85">
+            <line x1="200" y1="80" x2="200" y2="320"/>
+            <line x1="80" y1="200" x2="320" y2="200"/>
+            <line x1="115" y1="115" x2="285" y2="285"/>
+            <line x1="285" y1="115" x2="115" y2="285"/>
+          </g>
+
+          <!-- branded text around rind -->
+          <g font-family="Bodoni Moda, serif" font-size="14" font-weight="700" fill="#3a1d05" letter-spacing="3">
+            <path id="arc" d="M 60 200 A 140 140 0 0 1 340 200" fill="none"/>
+            <text><textPath href="#arc" startOffset="50%" text-anchor="middle">PARMIGIANO · PARMCO · REGGIANO</textPath></text>
+          </g>
+
+          <!-- center hub -->
+          <circle cx="200" cy="200" r="32" fill="#1a1410"/>
+          <circle cx="200" cy="200" r="26" fill="#b3261e"/>
+          <text x="200" y="208" text-anchor="middle" font-family="Bodoni Moda,serif" font-weight="900" font-size="22" fill="#f4ecd8" font-style="italic">P</text>
+
+          <!-- lug nuts -->
+          <g fill="#1a1410">
+            <circle cx="200" cy="170" r="4"/>
+            <circle cx="226" cy="186" r="4"/>
+            <circle cx="226" cy="214" r="4"/>
+            <circle cx="200" cy="230" r="4"/>
+            <circle cx="174" cy="214" r="4"/>
+            <circle cx="174" cy="186" r="4"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="label">01 · The Project</div>
+  <h2>A final project with <em>flavor.</em></h2>
+  <p class="lead">Parmco is the Group 8 capstone deliverable for ECSE 4235 — an end-to-end engineering project taking an idea from spec to working system. The build, the documentation, the testing, the demo: all of it lives in our repository, and all of it is the work of four engineers who decided that "boring nameplate" was not on the menu.</p>
+  <p class="lead">This site is the public face of that work. The code, schematics, write-ups, and revision history all live one click away on GitHub.</p>
+  <a class="cta" href="https://github.com/Herring-UGAECSE-4235-S26/Group-8/tree/main/FinalProject">View the Repository →</a>
+</section>
+
+<section>
+  <div class="label">02 · What's Inside</div>
+  <h2>Built in <em>three</em> layers.</h2>
+  <div class="grid-3">
+    <div>
+      <div class="num">/ 01</div>
+      <h3>Hardware</h3>
+      <p>The physical layer — boards, sensors, actuators, and the wiring that makes them all play nicely together. Designed, assembled, and bench-tested by the team.</p>
+    </div>
+    <div>
+      <div class="num">/ 02</div>
+      <h3>Firmware</h3>
+      <p>The brain. Embedded code handling I/O, timing, control loops, and the ugly edge cases that don't show up until 2 a.m. the night before the demo.</p>
+    </div>
+    <div>
+      <div class="num">/ 03</div>
+      <h3>Documentation</h3>
+      <p>Schematics, BOMs, test results, and a README that actually explains how to run the thing. Written so future students (and future us) can pick it up cold.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="label">03 · Project Spec</div>
+  <h2>The <em>fine</em> print.</h2>
+  <div class="specs">
+    <div>Course</div><div>UGA ECSE 4235 — Spring 2026</div>
+    <div>Group</div><div>Group 8</div>
+    <div>Instructor</div><div>Prof. Herring</div>
+    <div>Repository</div><div><a href="https://github.com/Herring-UGAECSE-4235-S26/Group-8/tree/main/FinalProject">Herring-UGAECSE-4235-S26/Group-8</a></div>
+    <div>Status</div><div>Active development</div>
+    <div>License</div><div>See repository</div>
+  </div>
+</section>
+
+<section>
+  <div class="label">04 · The Team</div>
+  <h2>Group <em>Eight.</em></h2>
+  <p class="lead">Four engineers, one repository, zero wheels of actual parmesan harmed in the making of this project.</p>
+  <div class="team">
+    <div><div class="role">Engineer</div><div class="name">Jeriko Kammerer</div></div>
+    <div><div class="role">Engineer</div><div class="name">Marra Young</div></div>
+    <div><div class="role">Engineer</div><div class="name">Member 03</div></div>
+    <div id="member4" style="cursor:pointer"><div class="role">Engineer</div><div class="name">Member 04</div></div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Parmco · Group 8 · UGA ECSE 4235 · <a href="https://github.com/Herring-UGAECSE-4235-S26/Group-8/tree/main/FinalProject">GitHub</a>
+</footer>
+
+<script>
+  document.getElementById('member4').addEventListener('click', function(){
+    window.location.href = 'https://jmail.world/';
+  });
+</script>
+</body>
+</html>
