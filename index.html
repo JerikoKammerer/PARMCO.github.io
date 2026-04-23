@@ -31,7 +31,6 @@
   a{color:var(--red-deep);text-decoration:none;border-bottom:1px solid var(--red-deep)}
   a:hover{background:var(--red);color:var(--cream)}
 
-  /* ─── top bar ─── */
   header.bar{
     display:flex;justify-content:space-between;align-items:center;
     padding:18px 32px;border-bottom:1px solid var(--ink);
@@ -40,7 +39,6 @@
   header.bar .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--red);margin-right:8px;animation:pulse 2s infinite}
   @keyframes pulse{50%{opacity:.3}}
 
-  /* ─── hero ─── */
   .hero{
     display:grid;grid-template-columns:1.1fr .9fr;gap:40px;
     padding:60px 32px 40px;border-bottom:1px solid var(--ink);
@@ -54,7 +52,7 @@
   .hero h1 .it{font-style:italic;color:var(--red);font-weight:700}
   .hero .tag{
     font-family:"Bodoni Moda",serif;font-style:italic;font-size:22px;
-    margin-top:24px;max-width:500px;color:#3a2e22;
+    margin-top:24px;max-width:560px;color:#3a2e22;
   }
   .hero .meta{
     font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.15em;
@@ -68,14 +66,12 @@
     background:radial-gradient(circle,rgba(231,181,73,.35),transparent 60%);
   }
 
-  /* ─── parmesan wheel ─── */
   .wheel{width:min(420px,80vw);height:min(420px,80vw);position:relative;cursor:pointer}
   .wheel svg{width:100%;height:100%;filter:drop-shadow(0 18px 30px rgba(122,22,15,.25))}
   .wheel .spin{transform-origin:center;animation:spin 4.5s linear infinite}
   .wheel:hover .spin{animation-duration:1s}
   @keyframes spin{to{transform:rotate(360deg)}}
 
-  /* ─── sections ─── */
   section{padding:80px 32px;border-bottom:1px solid var(--ink)}
   .label{
     font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.2em;
@@ -88,12 +84,14 @@
     line-height:.95;letter-spacing:-.02em;margin:0 0 40px;max-width:14ch;
   }
   h2 em{color:var(--red);font-weight:700}
-  p.lead{font-size:19px;line-height:1.6;max-width:62ch;color:#2a2018}
+  p.lead{font-size:19px;line-height:1.6;max-width:68ch;color:#2a2018}
 
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink);margin-top:50px}
-  .grid-3 > div{background:var(--cream);padding:32px}
-  .grid-3 h3{font-family:"Bodoni Moda",serif;font-size:28px;margin:0 0 12px;font-weight:700}
-  .grid-3 .num{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--red);letter-spacing:.2em}
+  .grid-3,.grid-4{display:grid;gap:1px;background:var(--ink);border:1px solid var(--ink);margin-top:50px}
+  .grid-3{grid-template-columns:repeat(3,1fr)}
+  .grid-4{grid-template-columns:repeat(4,1fr)}
+  .grid-3 > div,.grid-4 > div{background:var(--cream);padding:32px}
+  .grid-3 h3,.grid-4 h3{font-family:"Bodoni Moda",serif;font-size:28px;margin:0 0 12px;font-weight:700}
+  .grid-3 .num,.grid-4 .num,.mini-label{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--red);letter-spacing:.2em}
 
   .specs{display:grid;grid-template-columns:1fr 2fr;gap:0;border-top:1px solid var(--ink)}
   .specs > div{padding:20px 0;border-bottom:1px solid var(--line);font-size:15px}
@@ -103,6 +101,24 @@
   .team div{padding:24px;border:1px solid var(--ink);background:var(--crumb)}
   .team .role{font-family:"JetBrains Mono",monospace;font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--red)}
   .team .name{font-family:"Bodoni Moda",serif;font-size:22px;margin-top:6px}
+
+  .stack{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;margin-top:28px}
+  .panel{border:1px solid var(--ink);background:rgba(255,245,214,.7);padding:28px}
+  .panel h3{font-family:"Bodoni Moda",serif;font-size:30px;margin:0 0 16px}
+  .panel p,.panel li{line-height:1.65;color:#2a2018}
+  .panel ul{margin:0;padding-left:18px}
+
+  .command-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:24px}
+  .chip{padding:14px 16px;border:1px solid var(--ink);background:var(--crumb);font-family:"JetBrains Mono",monospace;font-size:12px;word-break:break-word}
+
+  .flow{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
+  .flow-step{border:1px solid var(--ink);padding:22px;background:var(--crumb);position:relative}
+  .flow-step h3{font-family:"Bodoni Moda",serif;font-size:24px;margin:8px 0 10px}
+  .flow-step::after{content:"→";position:absolute;right:-12px;top:50%;transform:translateY(-50%);font-size:26px;font-family:"Bodoni Moda",serif;color:var(--red)}
+  .flow-step:last-child::after{display:none}
+
+  .code-block{margin-top:28px;padding:24px;border:1px solid var(--ink);background:#1c1713;color:#f9f2de;overflow:auto}
+  .code-block code{font-family:"JetBrains Mono",monospace;font-size:13px;line-height:1.7;white-space:pre-wrap}
 
   .cta{
     display:inline-block;padding:18px 36px;background:var(--ink);color:var(--cream);
@@ -114,11 +130,17 @@
 
   footer{padding:40px 32px;text-align:center;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:#5a4a38}
 
+  @media (max-width:1000px){
+    .grid-4,.flow{grid-template-columns:1fr 1fr}
+    .stack{grid-template-columns:1fr}
+  }
   @media (max-width:800px){
+    header.bar{padding:16px 24px;gap:12px;flex-wrap:wrap}
     .hero{grid-template-columns:1fr;padding:40px 24px}
-    .grid-3{grid-template-columns:1fr}
+    .grid-3,.grid-4,.flow{grid-template-columns:1fr}
     section{padding:60px 24px}
     .specs{grid-template-columns:1fr}
+    .flow-step::after{display:none}
   }
 </style>
 </head>
@@ -133,11 +155,12 @@
 <div class="hero">
   <div>
     <h1>PARM<span class="it">co.</span></h1>
-    <p class="tag">Where the rind meets the road. A final project in propulsion, parmesan, and printed circuits — engineered by Group 8.</p>
+    <p class="tag">Where the rind meets the road. A BLE-connected motor-control system linking an iOS app to a Raspberry Pi 4 for real-time RPM control, feedback, and mode switching.</p>
     <div class="meta">
       <span>Est. Spring 2026</span>
       <span>Athens, GA</span>
       <span>Final Project</span>
+      <span>iOS ↔ RP4 ↔ Motor</span>
     </div>
   </div>
   <div class="logo-stage">
@@ -160,25 +183,19 @@
           </filter>
         </defs>
 
-        <!-- tire -->
         <circle cx="200" cy="200" r="195" fill="#1a1410"/>
         <circle cx="200" cy="200" r="178" fill="#0d0907"/>
         <g stroke="#1a1410" stroke-width="3">
-          <!-- tread marks -->
           <g id="tread">
             <line x1="200" y1="5" x2="200" y2="25"/>
           </g>
         </g>
 
         <g class="spin">
-          <!-- rind -->
           <circle cx="200" cy="200" r="170" fill="url(#rind)"/>
-          <!-- cheese face -->
           <circle cx="200" cy="200" r="155" fill="url(#cheese)"/>
-          <!-- crumb texture -->
           <circle cx="200" cy="200" r="155" fill="url(#cheese)" filter="url(#grain)" opacity=".9"/>
 
-          <!-- crumb holes -->
           <g fill="#d4a843" opacity=".55">
             <circle cx="160" cy="140" r="3"/>
             <circle cx="240" cy="160" r="2.5"/>
@@ -192,7 +209,6 @@
             <circle cx="200" cy="120" r="2"/>
           </g>
 
-          <!-- spokes radiating like a car wheel -->
           <g stroke="#7a4a0c" stroke-width="6" stroke-linecap="round" opacity=".85">
             <line x1="200" y1="80" x2="200" y2="320"/>
             <line x1="80" y1="200" x2="320" y2="200"/>
@@ -200,18 +216,15 @@
             <line x1="285" y1="115" x2="115" y2="285"/>
           </g>
 
-          <!-- branded text around rind -->
           <g font-family="Bodoni Moda, serif" font-size="14" font-weight="700" fill="#3a1d05" letter-spacing="3">
             <path id="arc" d="M 60 200 A 140 140 0 0 1 340 200" fill="none"/>
             <text><textPath href="#arc" startOffset="50%" text-anchor="middle">PARMIGIANO · PARMCO · REGGIANO</textPath></text>
           </g>
 
-          <!-- center hub -->
           <circle cx="200" cy="200" r="32" fill="#1a1410"/>
           <circle cx="200" cy="200" r="26" fill="#b3261e"/>
           <text x="200" y="208" text-anchor="middle" font-family="Bodoni Moda,serif" font-weight="900" font-size="22" fill="#f4ecd8" font-style="italic">P</text>
 
-          <!-- lug nuts -->
           <g fill="#1a1410">
             <circle cx="200" cy="170" r="4"/>
             <circle cx="226" cy="186" r="4"/>
@@ -229,54 +242,172 @@
 <section>
   <div class="label">01 · The Project</div>
   <h2>A final project with <em>flavor.</em></h2>
-  <p class="lead">Parmco is the Group 8 capstone deliverable for ECSE 4235 — an end-to-end engineering project taking an idea from spec to working system. The build, the documentation, the testing, the demo: all of it lives in our repository, and all of it is the work of four engineers who decided that "boring nameplate" was not on the menu.</p>
-  <p class="lead">This site is the public face of that work. The code, schematics, write-ups, and revision history all live one click away on GitHub.</p>
+  <p class="lead">PARMCO stands for Phone App RP4 Motor Control. The project was built to satisfy the ECSE 4235 requirement of a standalone system in which a phone app connects over Bluetooth to a Raspberry Pi 4, controls a DC motor, and reports live RPM back to the user. The final system supports direction control, start and stop, manual speed control, automatic RPM maintenance, and a match mode that tracks a second motor using a separate optical sensor.</p>
+  <p class="lead">This site is the public face of that work. The repository contains the iOS app, the Raspberry Pi control software, the assembly GPIO helpers, documentation, and iteration history. The goal was not just to make the motor spin, but to build a clean end-to-end system that could be demonstrated, reinstalled, re-paired, and understood by someone reading the code cold.</p>
   <a class="cta" href="https://github.com/Herring-UGAECSE-4235-S26/Group-8/tree/main/FinalProject">View the Repository →</a>
 </section>
 
 <section>
-  <div class="label">02 · What's Inside</div>
-  <h2>Built in <em>three</em> layers.</h2>
-  <div class="grid-3">
-    <div>
-      <div class="num">/ 01</div>
-      <h3>Hardware</h3>
-      <p>The physical layer — boards, sensors, actuators, and the wiring that makes them all play nicely together. Designed, assembled, and bench-tested by the team.</p>
+  <div class="label">02 · System Overview</div>
+  <h2>One app. One Pi. One <em>control loop.</em></h2>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="mini-label">Step 01</div>
+      <h3>iOS App</h3>
+      <p>SwiftUI provides the front end for scanning, pairing, mode selection, motor start/stop, direction changes, speed updates, and target RPM entry.</p>
     </div>
-    <div>
-      <div class="num">/ 02</div>
-      <h3>Firmware</h3>
-      <p>The brain. Embedded code handling I/O, timing, control loops, and the ugly edge cases that don't show up until 2 a.m. the night before the demo.</p>
+    <div class="flow-step">
+      <div class="mini-label">Step 02</div>
+      <h3>BLE Link</h3>
+      <p>The phone discovers the Pi as <strong>PARMCO-RP4</strong>, connects over BLE, writes command packets, and subscribes to notification characteristics for RPM feedback.</p>
     </div>
-    <div>
-      <div class="num">/ 03</div>
-      <h3>Documentation</h3>
-      <p>Schematics, BOMs, test results, and a README that actually explains how to run the thing. Written so future students (and future us) can pick it up cold.</p>
+    <div class="flow-step">
+      <div class="mini-label">Step 03</div>
+      <h3>RP4 Control</h3>
+      <p>The Raspberry Pi 4 runs a C-based control program that parses commands, updates state, drives GPIO, and maintains the motor-control threads.</p>
+    </div>
+    <div class="flow-step">
+      <div class="mini-label">Step 04</div>
+      <h3>Physical Output</h3>
+      <p>The motor driver stage applies PWM and direction signals while IR sensors feed rotational data back into the software for reporting and automatic control.</p>
     </div>
   </div>
 </section>
 
 <section>
-  <div class="label">03 · Project Spec</div>
+  <div class="label">03 · What's Inside</div>
+  <h2>Built in <em>four</em> layers.</h2>
+  <div class="grid-4">
+    <div>
+      <div class="num">/ 01</div>
+      <h3>Interface</h3>
+      <p>A SwiftUI front end organizes connection state, direction toggles, manual speed control, automatic RPM input, live telemetry, and reconnect behavior in a single shared Bluetooth session.</p>
+    </div>
+    <div>
+      <div class="num">/ 02</div>
+      <h3>BLE Stack</h3>
+      <p>Custom service and characteristic UUIDs define the command path, motor RPM feedback path, and matched RPM feedback path. The app writes commands and subscribes to notifications.</p>
+    </div>
+    <div>
+      <div class="num">/ 03</div>
+      <h3>Embedded Control</h3>
+      <p>The Raspberry Pi code manages advertising, ATT/L2CAP setup, command parsing, multithreaded motor timing, RPM measurement, and control-mode switching.</p>
+    </div>
+    <div>
+      <div class="num">/ 04</div>
+      <h3>Hardware</h3>
+      <p>The hardware layer includes the motor, MOSFET-driven output stage, propeller-based optical feedback, and direct GPIO manipulation through ARM assembly helper routines.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="label">04 · Technical Architecture</div>
+  <h2>The <em>real</em> system under the branding.</h2>
+  <div class="stack">
+    <div class="panel">
+      <h3>App-side behavior</h3>
+      <p>The iOS app uses a shared <strong>BluetoothManager</strong> object so the discovery UI and motor-control UI operate on the same active BLE session. After connect, the app pushes the current UI state back to the Pi so reconnects do not leave the embedded side stale. Slider-based control writes are debounced to reduce command spam while keeping the interface responsive.</p>
+      <div class="command-strip">
+        <div class="chip">MOTOR:START</div>
+        <div class="chip">MOTOR:STOP</div>
+        <div class="chip">DIR:CW / DIR:CCW</div>
+        <div class="chip">MODE:Manual</div>
+        <div class="chip">MODE:Auto/Maintain</div>
+        <div class="chip">MODE:Match</div>
+        <div class="chip">SPEED:0–100</div>
+        <div class="chip">RPM:target</div>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Pi-side behavior</h3>
+      <p>The Raspberry Pi 4 advertises as <strong>PARMCO-RP4</strong>, accepts BLE connections, instantiates a GATT server, and runs independent threads for motor drive, primary RPM measurement, and matched-RPM measurement. The code stores control variables atomically so command updates from BLE and sensor updates from the worker threads remain synchronized.</p>
+      <ul>
+        <li><strong>GPIO 23 / 24:</strong> motor direction outputs</li>
+        <li><strong>GPIO 18:</strong> primary IR sensor for local RPM</li>
+        <li><strong>GPIO 22:</strong> second IR sensor for match mode</li>
+        <li><strong>GPIO 27:</strong> BLE status LED</li>
+        <li><strong>PWM base rate:</strong> 1 kHz</li>
+        <li><strong>RPM window:</strong> 200 ms</li>
+      </ul>
+    </div>
+  </div>
+  <div class="code-block"><code>Service UUID      12345678-1234-5678-1234-56789abcdef0
+Command UUID      12345678-1234-5678-1234-56789abcdef1
+Motor RPM UUID    12345678-1234-5678-1234-56789abcdef2
+Matched RPM UUID  12345678-1234-5678-1234-56789abcdef3</code></div>
+</section>
+
+<section>
+  <div class="label">05 · Control Modes</div>
+  <h2>Manual when you want it. Closed-loop when you <em>need</em> it.</h2>
+  <div class="grid-3">
+    <div>
+      <div class="num">/ 01</div>
+      <h3>Manual</h3>
+      <p>The user directly chooses a duty-cycle-style speed level from the app. This mode is useful for baseline testing, verifying direction changes, and measuring how the motor behaves without automatic correction.</p>
+    </div>
+    <div>
+      <div class="num">/ 02</div>
+      <h3>Auto / Maintain</h3>
+      <p>The app provides a target RPM and the Pi continuously compares that target to measured RPM from the primary IR sensor. A feedforward estimate is combined with PID trim to keep the motor near the requested speed.</p>
+    </div>
+    <div>
+      <div class="num">/ 03</div>
+      <h3>Match</h3>
+      <p>A second IR sensor measures another spinning propeller. The Pi treats that reading as the effective target and adjusts its own duty cycle so the controlled motor follows the other motor’s RPM in real time.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="label">06 · Implementation Notes</div>
+  <h2>Why this build is <em>technical.</em></h2>
+  <div class="stack">
+    <div class="panel">
+      <h3>Signal and timing decisions</h3>
+      <ul>
+        <li>RPM is measured by counting debounced optical pulses in fixed windows rather than trusting a single edge.</li>
+        <li>The code assumes three pulses per revolution, which is then scaled into RPM.</li>
+        <li>Very low or noisy pulse counts are rejected to avoid reporting false rotation.</li>
+        <li>Automatic control uses filtered RPM values instead of raw quantized readings to stabilize updates.</li>
+      </ul>
+    </div>
+    <div class="panel">
+      <h3>Software architecture decisions</h3>
+      <ul>
+        <li>The BLE session is preserved across views by sharing one manager instance through the SwiftUI app.</li>
+        <li>The phone remembers the Pi UUID and can forget and re-pair when needed.</li>
+        <li>The Pi starts in a quiet state and waits for the phone, matching the project specification.</li>
+        <li>GPIO helper functions are implemented in ARM assembly for direct register-level control on the BCM2711.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="label">07 · Project Spec</div>
   <h2>The <em>fine</em> print.</h2>
   <div class="specs">
     <div>Course</div><div>UGA ECSE 4235 — Spring 2026</div>
+    <div>Project Name</div><div>Phone App RP4 Motor Control (PARMCO)</div>
     <div>Group</div><div>Group 8</div>
     <div>Instructor</div><div>Prof. Herring</div>
+    <div>System Goal</div><div>Standalone Bluetooth motor-control system with live RPM feedback between an iPhone app and a Raspberry Pi 4.</div>
+    <div>Required Features</div><div>Direction, faster/slower control, stop/start, desired RPM entry, manual mode, automatic maintain mode, automatic match mode, and live RPM reporting.</div>
     <div>Repository</div><div><a href="https://github.com/Herring-UGAECSE-4235-S26/Group-8/tree/main/FinalProject">Herring-UGAECSE-4235-S26/Group-8</a></div>
-    <div>Status</div><div>Active development</div>
+    <div>Status</div><div>Final project website and technical documentation in active refinement.</div>
     <div>License</div><div>See repository</div>
   </div>
 </section>
 
 <section>
-  <div class="label">04 · The Team</div>
+  <div class="label">08 · The Team</div>
   <h2>Group <em>Eight.</em></h2>
-  <p class="lead">Four engineers, one repository, zero wheels of actual parmesan harmed in the making of this project.</p>
+  <p class="lead">Two engineers, one repository, zero wheels of actual parmesan harmed in the making of this project.</p>
   <div class="team">
     <div><div class="role">Engineer</div><div class="name">Jeriko Kammerer</div></div>
     <div><div class="role">Engineer</div><div class="name">Marra Young</div></div>
-    <div id="member4" style="cursor:pointer"><div class="role">Engineer</div><div class="name">J.E</div></div>
   </div>
 </section>
 
@@ -284,10 +415,5 @@
   © 2026 Parmco · Group 8 · UGA ECSE 4235 · <a href="https://github.com/Herring-UGAECSE-4235-S26/Group-8/tree/main/FinalProject">GitHub</a>
 </footer>
 
-<script>
-  document.getElementById('member4').addEventListener('click', function(){
-    window.location.href = 'https://jmail.world/';
-  });
-</script>
 </body>
 </html>
